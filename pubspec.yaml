@@ -35,6 +35,29 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  get: ^4.6.6
+  get_storage: ^2.1.1
+  dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
+  logger: ^2.4.0
+  flutter_screenutil: ^5.9.3
+  flutter_easyloading: ^3.0.5
+  flutter_svg: ^2.0.10+1
+  loading_indicator: ^3.1.1
+  cached_network_image: ^3.4.1
+  carousel_slider: ^5.0.0
+  dots_indicator: ^3.0.0
+  device_info_plus: ^10.1.2
+  permission_handler: ^11.3.1
+  infinite_scroll_pagination: ^4.0.0
+  shimmer: ^3.0.0
+  flutter_animate: ^4.5.0
+  webview_flutter: ^4.9.0
+  dropdown_search: ^6.0.1
+  share_plus: ^10.0.2
+  url_launcher: ^6.3.0
+  connectivity_plus: ^6.0.5
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +80,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -86,5 +112,36 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Black.ttf
+        - asset: assets/fonts/Cairo-Bold.ttf
+        - asset: assets/fonts/Cairo-Medium.ttf
+        - asset: assets/fonts/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo-SemiBold.ttf
+        - asset: assets/fonts/Cairo-Light.ttf
+
+#  fonts:
+#    - family: CairoBlack
+#      fonts:
+#        - asset: assets/fonts/Cairo-Black.ttf
+#    - family: CairoBold
+#      fonts:
+#        - asset: assets/fonts/Cairo-Bold.ttf
+#    - family: CairoMedium
+#      fonts:
+#        - asset: assets/fonts/Cairo-Medium.ttf
+#    - family: CairoRegular
+#      fonts:
+#        - asset: assets/fonts/Cairo-Regular.ttf
+#    - family: CairoSemiBold
+#      fonts:
+#        - asset: assets/fonts/Cairo-SemiBold.ttf
+#    - family: CairoLight
+#      fonts:
+#        - asset: assets/fonts/Cairo-Light.ttf
+#
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
