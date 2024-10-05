@@ -9,6 +9,7 @@ class CustomText extends StatelessWidget {
   final int? maxLines; // Optional max lines
   final double? height; // Optional max lines
   final TextOverflow? overflow; // Optiona
+  final TextDecoration? decoration; // Optiona
 
   const CustomText({
     super.key,
@@ -17,6 +18,7 @@ class CustomText extends StatelessWidget {
     this.maxLines,
     this.height,
     this.overflow,
+    this.decoration,
     this.fontWeight = FontWeight.normal,
     this.color = Colors.black,
     this.textAlign = TextAlign.start,
@@ -33,6 +35,8 @@ class CustomText extends StatelessWidget {
         fontSize: fontSize,
         overflow: overflow,
         height: height,
+        decoration: decoration,
+        decorationColor: color,
         fontWeight: fontWeight,
         color: color,
       ),

@@ -1,11 +1,12 @@
 class ApiConstant {
-  static const login = 'auth/login';
+  static const login = 'DriverApp/SignIn';
+  static const getHomePageStatistics = 'DriverApp/GetHomePageStatistics';
   static const register = 'auth/register';
   static const verify = 'auth/verify';
   static const resendOtp = 'auth/resend-OTP';
   static const resendOtpWithoutToken = 'auth/resend-OTP-without-token';
   static const resetPassword = 'auth/reset-password';
-  static const changePassword = 'auth/change-password';
+  static const changePassword = 'DriverApp/ChangePassword';
   static const profile = 'auth/profile';
   static const completeProfile = 'auth/complete-profile';
   static const entities = 'entities';

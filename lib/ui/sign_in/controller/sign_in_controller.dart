@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart' as d;
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
@@ -9,17 +8,15 @@ import '../../../app/translations/lang_keys.dart';
 import '../../../app/util/ui_error_utils.dart';
 import '../../../data/api/api_constant.dart';
 import '../../../data/api/http_service.dart';
+import '../../../data/models/user/user_model.dart';
 import '../../base_controller.dart';
-import '../../public_controller.dart';
 
 class SignInController extends BaseController {
   var obscureText = true.obs;
   final email = TextEditingController();
   final password = TextEditingController();
 
-
   Future<void> validation() async {
-
     if (email.text.isEmpty) {
       UiErrorUtils.customSnackbar(
           title: LangKeys.error.tr, msg: LangKeys.enterEmail.tr);
@@ -39,7 +36,6 @@ class SignInController extends BaseController {
     login();
   }
 
-
   Future<void> login() async {
     // if (FcmHelper.fcmToken == null || FcmHelper.fcmToken == "") {
     //   await FirebaseMessaging.instance.getToken().then((token) {
@@ -47,40 +43,34 @@ class SignInController extends BaseController {
     //     if (kDebugMode) {
     //       print(token);
     //     }
-    //
     //   });
     // }
-    // try {
-    //   Map<String, String> body = {
-    //     "email": email.text,
-    //     "password": password.text,
-    //     "firebase_token": FcmHelper.fcmToken ?? "",
-    //   };
-    //   EasyLoading.show();
-    //   final result = await httpService.request(
-    //       url: ApiConstant.login, method: Method.POST, params: body);
-    //   if (result != null) {
-    //     if (result is d.Response) {
-    //       var data = UserModel.fromJson(result.data);
-    //       if (data.status == 200) {
-    //         if (data.data != null && data.data?.user?.emailVerifiedAt == null) {
-    //           sendVerificationCode(data.data!.token ?? "");
-    //         } else {
-    //           storage.setUserToken(data.data!.token!);
-    //           storage.setUser(data.data!.user!);
-    //           Get.find<PublicController>()
-    //               .updateUserFirebase(false, isUpdateProfile: true);
-    //           Get.offAllNamed(AppRoutes.home);
-    //         }
-    //       } else {
-    //         UiErrorUtils.customSnackbar(
-    //             title: LangKeys.error.tr, msg: data.message ?? "");
-    //       }
-    //     }
-    //   }
-    // } finally {
-    //   EasyLoading.dismiss(animation: true);
-    // }
+    try {
+      Map<String, String> body = {
+        "email": email.text,
+        "password": password.text,
+        // "firebase_token": FcmHelper.fcmToken ?? "",
+      };
+      EasyLoading.show();
+      final result = await httpService.request(
+          url: ApiConstant.login, method: Method.POST, params: body);
+      if (result != null) {
+        if (result is d.Response) {
+          var data = UserModel.fromJson(result.data);
+          if (data.errorCode == 0) {
+            if (data.result != null && data.result?.tokenInfo != null) {}
+            storage.setUserToken(data.result!.tokenInfo!.token!);
+            storage.setUser(data.result!);
+            Get.offAllNamed(AppRoutes.home);
+          } else {
+            UiErrorUtils.customSnackbar(
+                title: LangKeys.error.tr, msg: data.errorMessage ?? "");
+          }
+        }
+      }
+    } finally {
+      EasyLoading.dismiss(animation: true);
+    }
   }
 
   Future<void> sendVerificationCode(String token) async {
@@ -109,5 +99,4 @@ class SignInController extends BaseController {
     //   EasyLoading.dismiss(animation: true);
     // }
   }
-
 }

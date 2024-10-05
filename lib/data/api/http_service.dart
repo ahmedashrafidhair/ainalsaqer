@@ -3,22 +3,19 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart' hide Response, FormData;
-
 import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
-
 import '../../app/services/storage_service.dart';
 import '../../app/translations/lang_keys.dart';
 import '../../app/util/bottom_sheet.dart';
 import '../../app/util/ui_error_utils.dart';
-
+import '../models/global_model.dart';
 
 // ignore: constant_identifier_names
 enum Method { POST, GET, PUT, DELETE, PATCH }
 
 // ignore: constant_identifier_names
-const BASE_URL = "https://arabzawaj.ae/api/";
+const BASE_URL = "https://apitest.ainalsaqer.app/api/";
 
 class HttpService extends GetxService {
   Dio? _dio;
@@ -40,11 +37,11 @@ class HttpService extends GetxService {
       receiveTimeout: const Duration(seconds: 60),
     ))
       ..interceptors.add(PrettyDioLogger(
-        requestHeader: kDebugMode ?  true : false,
-        requestBody: kDebugMode ?  true : false,
-        request: kDebugMode ?  true : false,
-        responseBody: kDebugMode ?  true : false,
-        responseHeader: kDebugMode ?  true : false,
+        requestHeader: kDebugMode ? true : false,
+        requestBody: kDebugMode ? true : false,
+        request: kDebugMode ? true : false,
+        responseBody: kDebugMode ? true : false,
+        responseHeader: kDebugMode ? true : false,
         compact: false,
       ));
     // initInterceptors();
@@ -76,35 +73,30 @@ class HttpService extends GetxService {
       ),
     );
   }
+
   Future<dynamic> request(
       {required String url,
       required Method method,
       Map<String, dynamic>? params,
       bool isUploadImg = false,
-      FormData? formData, String? token}) async {
+      FormData? formData,
+      String? token}) async {
     print("Log url $url");
     Response response;
     try {
       _dio!.options.headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "x-api-key": "cb816998-c908-4282-a61c-522423cacaad",
-        // "timezone":  _configureLocalTimeZone(),
         "Accept-Language": Get.find<StorageService>().getLanguageCode(),
-        // "X-localization": Get.find<StorageService>().getLanguageCode(),
-        // "Authorization":
-        //     "Bearer ${Get.find<StorageService>().getToken() ?? ""}",
-        "device-type": Platform.isAndroid ? "android" : "ios",
-        // "device-id": storage.deviceId ?? "",
+        // "device-type": Platform.isAndroid ? "android" : "ios",
       };
-      if(token != null && token != ""){
-        _dio!.options.headers['Authorization'] =
-        "Bearer $token";
-      }else{
+      if (token != null && token != "") {
+        _dio!.options.headers['Authorization'] = token;
+      } else {
         if (Get.find<StorageService>().getToken() != null &&
             Get.find<StorageService>().getToken()!.isNotEmpty) {
           _dio!.options.headers['Authorization'] =
-          "Bearer ${Get.find<StorageService>().getToken() ?? ""}";
+              Get.find<StorageService>().getToken() ?? "";
         }
       }
       if (method == Method.POST) {
@@ -118,7 +110,8 @@ class HttpService extends GetxService {
       } else if (method == Method.DELETE) {
         response = await _dio!.delete(url);
       } else if (method == Method.PATCH) {
-        response = await _dio!.patch(url, data: isUploadImg == true ? formData : params);
+        response = await _dio!
+            .patch(url, data: isUploadImg == true ? formData : params);
       } else {
         response = await _dio!.get(url, queryParameters: params);
       }
@@ -199,25 +192,24 @@ class HttpService extends GetxService {
 }
 //
 
-
 String _handleError(int statusCode, dynamic error) {
-  // switch (statusCode) {
-  //   case 400:
-  //     return GlobalModel.fromJson(error).message ?? "";
-  //   case 404:
-  //     return error["message"];
-  //   case 405:
-  //     return error["message"];
-  //   case 403:
-  //     return error["message"];
-  //   case 422:
-  //     return GlobalModel.fromJson(error).message ?? "";
-  //   case 500:
-  //     return 'Internal Server Error';
-  //   default:
-  //     return 'Oops Something Went Wrong';
-  // }
-  return 'Oops Something Went Wrong';
+  switch (statusCode) {
+    case 400:
+      return GlobalModel.fromJson(error).errorMessage ?? "";
+    case 404:
+      return error["message"];
+    case 405:
+      return error["message"];
+    case 403:
+      return error["message"];
+    case 422:
+      return GlobalModel.fromJson(error).errorMessage ?? "";
+    case 500:
+      return 'Internal Server Error';
+    default:
+      return 'Oops Something Went Wrong';
+  }
+  // return 'Oops Something Went Wrong';
 }
 
 // String showError(Errors errors) {

@@ -1,6 +1,5 @@
 import 'package:ainalsaqer/app/components/custom_text.dart';
 import 'package:ainalsaqer/app/components/custom_text_form_field.dart';
-import 'package:ainalsaqer/app/util/ui_error_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -117,11 +116,10 @@ class SignIn extends StatelessWidget {
                               text: LangKeys.signIn.tr,
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  // If the form is valid, display a snackbar
-                                  UiErrorUtils.customSnackbar(
-                                      msg: "خطا", title: "تم بنجاح");
+                                  controller.login();
                                 }
                                 // controller.validation();
+
                                 // Get.toNamed(AppRoutes.home);
                               },
                             ),

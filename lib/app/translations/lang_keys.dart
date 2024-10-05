@@ -238,6 +238,14 @@ class LangKeys {
   static const String emailIsRequired = 'emailIsRequired';
   static const String passwordMustBeAtLeast = 'passwordMustBeAtLeast';
   static const String charactersLong = 'charactersLong';
+  static const String myOrders = 'myOrders';
+  static const String todaysOrders = 'todaysOrders';
+  static const String scheduleOrders = 'scheduleOrders';
+  static const String expenses = 'expenses';
+  static const String truckNumber = 'truckNumber';
+  static const String licenseNo = 'licenseNo';
+  static const String ownerName = 'ownerName';
+  static const String ownerPhoneNumber = 'ownerPhoneNumber';
 
 
 }

@@ -17,15 +17,15 @@ class SplashController extends BaseController {
   void checkAuth() async {
     // await FcmHelper.initFcm();
     Future.delayed(const Duration(seconds: 3), () {
-      if (storage.isIntro()) {
+      // if (storage.isIntro()) {
         if (storage.getToken() != null) {
-          // Get.offAllNamed(AppRoutes.home);
+          Get.offAllNamed(AppRoutes.home);
         } else {
           Get.offAllNamed(AppRoutes.signIn);
         }
-      } else {
-        Get.offAllNamed(AppRoutes.signIn);
-      }
+      // } else {
+      //   Get.offAllNamed(AppRoutes.signIn);
+      // }
     });
   }
 

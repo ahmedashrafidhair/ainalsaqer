@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../data/models/user/user.dart';
 
 class StorageService extends GetxService {
   String? languageCode;
@@ -21,12 +22,12 @@ class StorageService extends GetxService {
     return this;
   }
 
-  // User? getUser() {
-  //   if (GetStorage().read("user_ainalsaqer") != null) {
-  //     return User.fromJson(GetStorage().read("user_ainalsaqer"));
-  //   }
-  //   return null;
-  // }
+  User? getUser() {
+    if (GetStorage().read("user_ainalsaqer") != null) {
+      return User.fromJson(GetStorage().read("user_ainalsaqer"));
+    }
+    return null;
+  }
   String getLanguageCode() {
     if (GetStorage().read("languageCode") != null) {
       return GetStorage().read("languageCode");
@@ -91,27 +92,19 @@ class StorageService extends GetxService {
     GetStorage().write("is_lang_first_ainalsaqer", isLang);
   }
 
-  // void setUser(User value) {
-  //   GetStorage().write(
-  //       "user_ainalsaqer",
-  //       User(
-  //               name: value.name,
-  //               id: value.id,
-  //               countryCode: value.countryCode,
-  //               email: value.email,
-  //               emailVerifiedAt: value.emailVerifiedAt,
-  //               accountVerifiedAt: value.accountVerifiedAt,
-  //               avatar: value.avatar,
-  //               city: value.city,
-  //               code: value.code,
-  //               createdAt: value.createdAt,
-  //               gender: value.gender,
-  //               profileCompleted: value.profileCompleted,
-  //               country: value.country,
-  //               firebaseToken: value.firebaseToken,
-  //               phone: value.phone,
-  //               phoneVerifiedAt: value.phoneVerifiedAt)
-  //           .toJson());
-  // }
-
+  void setUser(User value) {
+    GetStorage().write(
+        "user_ainalsaqer",
+        User(
+          name: value.name,
+          acceptedLanguage: value.acceptedLanguage,
+          licenseNo: value.licenseNo,
+          ownerName: value.ownerName,
+          ownerPhoneNumber: value.ownerPhoneNumber,
+          phoneNumber: value.phoneNumber,
+          tokenInfo: value.tokenInfo,
+          truckNumber: value.truckNumber,
+          email: value.email,
+        ).toJson());
+  }
 }

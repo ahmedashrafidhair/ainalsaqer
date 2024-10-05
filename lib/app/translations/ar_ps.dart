@@ -25,7 +25,7 @@ const Map<String, String> ar = {
   LangKeys.enterConfirmPassword: 'ادخل كلمة المرور',
   LangKeys.enterConfirmNewPassword: 'يرجى ادخال تاكيد كلمة المرور الجديدة',
   LangKeys.profile: 'حسابي',
-  LangKeys.contactUs: 'الاتصال بنا',
+  LangKeys.contactUs: 'تواصل معنا',
   LangKeys.save: 'حفظ',
   LangKeys.cancel: 'الغاء',
   LangKeys.delete: 'حذف',
@@ -246,5 +246,12 @@ const Map<String, String> ar = {
   LangKeys.emailIsRequired: 'البريد الإلكتروني مطلوب',
   LangKeys.passwordMustBeAtLeast: 'يجب أن تكون كلمة المرور مكونة من',
   LangKeys.charactersLong: 'أحرف على الأقل',
-
+  LangKeys.myOrders: 'طلباتي',
+  LangKeys.todaysOrders: 'اليوم',
+  LangKeys.scheduleOrders: 'المجدولة',
+  LangKeys.expenses: 'المصاريف',
+  LangKeys.truckNumber: 'رقم الشاحنة',
+  LangKeys.licenseNo: 'رقم الرخصة',
+  LangKeys.ownerName: 'اسم المالك',
+  LangKeys.ownerPhoneNumber: 'رقم هاتف المالك',
 };

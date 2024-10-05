@@ -24,7 +24,7 @@ class FormValidator {
   }
 
   // Password validation (minimum length 6 characters)
-  static String? validatePassword(String? value, {int minLength = 8}) {
+  static String? validatePassword(String? value, {int minLength = 6}) {
     if (value == null || value.isEmpty) {
       return LangKeys.passwordIsRequired.tr;
     }

@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 import '../extensions/color.dart';
 
 class AppColors {
@@ -7,7 +7,7 @@ class AppColors {
   static Color primary2 = HexColor("E03432");
   static Color primaryLight = HexColor("FCC059");
   static Color bgSplash = HexColor("104C5B");
-  static Color bgColor = HexColor("F9F9F9");
+  static Color bgColor = HexColor("FFFFFF");
   static Color hintColor = HexColor("B2B2B2");
   static Color menuUnSelColor = HexColor("878787");
   static Color green = HexColor("25C967");
@@ -83,4 +83,3 @@ class AppColors {
   static Color tabBarSelected = HexColor("0A8E9B");
   static Color termsColor = HexColor("398CC6");
 }
-
