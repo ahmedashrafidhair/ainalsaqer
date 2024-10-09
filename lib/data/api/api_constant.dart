@@ -1,6 +1,13 @@
 class ApiConstant {
   static const login = 'DriverApp/SignIn';
   static const getHomePageStatistics = 'DriverApp/GetHomePageStatistics';
+  static const getUnBookedOrders = 'DriverApp/GetUnBookedOrders';
+  static const getMyOrders = 'DriverApp/GetMyOrders';
+  static const getDriverExpenses = 'DriverApp/GetDriverExpenses';
+  static const getAllExpense = 'DriverApp/GetAllExpense';
+  static const addDriverExpense = 'DriverApp/AddDriverExpense';
+  static const saveFile = 'File/SaveFile';
+  static const deleteFile = 'File/DeleteFile';
   static const register = 'auth/register';
   static const verify = 'auth/verify';
   static const resendOtp = 'auth/resend-OTP';

@@ -230,7 +230,6 @@ class LangKeys {
   static const String image = 'image';
   static const String voice = 'voice';
 
-
   //////////////////////
   static const String heyYou = 'heyYou';
   static const String isRequired = 'isRequired';
@@ -239,13 +238,82 @@ class LangKeys {
   static const String passwordMustBeAtLeast = 'passwordMustBeAtLeast';
   static const String charactersLong = 'charactersLong';
   static const String myOrders = 'myOrders';
-  static const String todaysOrders = 'todaysOrders';
+  static const String today = 'today';
   static const String scheduleOrders = 'scheduleOrders';
   static const String expenses = 'expenses';
   static const String truckNumber = 'truckNumber';
   static const String licenseNo = 'licenseNo';
   static const String ownerName = 'ownerName';
   static const String ownerPhoneNumber = 'ownerPhoneNumber';
+  static const String order = 'order';
+  static const String orderDate = 'orderDate';
+
+  //orderType
+  static const String now = 'now';
+  static const String schedule = 'schedule';
+//orderType
+
+  static const String orderType = 'orderType';
+  static const String serviceType = 'serviceType';
+
+  // serviceType
+  static const String pickUp = 'pickUp';
+  static const String deliver = 'deliver';
+  static const String betweenBranches = 'betweenBranches';
+  static const String betweenCustomers = 'betweenCustomers';
+  // serviceType
+
+  // order status
+  static const String created = 'created';
+  static const String modified = 'modified';
+  static const String booked = 'booked';
+  static const String inTransit = 'inTransit';
+  static const String pickedUpDone = 'pickedUpDone';
+  static const String delivered = 'delivered';
+  static const String deliveredWithPriceChanged = 'deliveredWithPriceChanged';
+  static const String deliveredWithLocationChanged =
+      'deliveredWithLocationChanged';
+  static const String cancelledByCustomer = 'cancelledByCustomer';
+  static const String pending = 'pending';
+  static const String cancelled = 'cancelled';
+  static const String shipmente = 'shipmente';
+  static const String shipmenteApproved = 'shipmenteApproved';
+  static const String invoiceGenerated = 'invoiceGenerated';
+  static const String arriveToPickUpLocation = 'arriveToPickUpLocation';
+  static const String arriveToDelivedLocation = 'arriveToDelivedLocation';
+  // order status
+
+  static const String orderStatus = 'orderStatus';
+  static const String viewOrder = 'viewOrder';
+  static const String todaysOrders = 'todaysOrders';
+  static const String expense = 'expense';
+  static const String typeExpense = 'typeExpense';
+  static const String currency = 'currency';
+  static const String billNumber = 'billNumber';
+  static const String expenseStatus = 'expenseStatus';
+  static const String approved = 'approved';
+  static const String waiting = 'waiting';
+  static const String addExpense = 'addExpense';
+  static const String expenseInformation = 'expenseInformation';
+  static const String expenseInformationMsg = 'expenseInformationMsg';
+  static const String selectTypeExpense = 'selectTypeExpense';
+  static const String selectTypeExpenseFinancialClaim = 'selectTypeExpenseFinancialClaim';
+  static const String orderNumber = 'orderNumber';
+  static const String value = 'value';
+  static const String notes = 'notes';
+  static const String pleaseWriteCommentsHere = 'pleaseWriteCommentsHere';
+  static const String add = 'add';
+  static const String takeAPhoto = 'takeAPhoto';
+  static const String chooseFromGallery = 'chooseFromGallery';
+  static const String attachPictureDocumentHere = 'attachPictureDocumentHere';
+  static const String to = 'to';
+  static const String fromDate = 'fromDate';
+  static const String date = 'date';
+  static const String currentOrders = 'currentOrders';
+  static const String expiredOrders = 'expiredOrders';
+  static const String cancelledOrders = 'cancelledOrders';
+  static const String allOrders = 'allOrders';
+
 
 
 }

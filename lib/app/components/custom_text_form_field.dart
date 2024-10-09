@@ -14,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
   bool? isPassword;
   bool? isShowIconPassword;
   final bool isRequired;
+  final int? minLines;
   final VoidCallback? onTogglePassword;
   final String? Function(String?)? validator;
 
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
     this.isPassword = false,
     this.isShowIconPassword = false,
     this.isRequired = true,
+    this.minLines = 1,
     this.onTogglePassword,
     this.validator,
   });
@@ -39,6 +41,8 @@ class CustomTextFormField extends StatelessWidget {
         keyboardType: keyboardType,
         obscureText: isPassword ?? false,
         obscuringCharacter: "*",
+        minLines: isPassword ?? false ? 1 : minLines,
+        maxLines: isPassword ?? false ? 1 : null,
         textInputAction: textInputAction,
         // Control visibility
         decoration: CommonStyle.textFieldStyle(hintTextStr: hintTxt).copyWith(

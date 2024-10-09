@@ -3,6 +3,7 @@ import 'package:get/get_rx/get_rx.dart';
 
 import '../../base_controller.dart';
 import '../../home_page/view/home_page.dart';
+import '../../my_orders/view/my_orders.dart';
 import '../../settings/view/settings_page.dart';
 
 class HomeController extends BaseController {
@@ -11,9 +12,8 @@ class HomeController extends BaseController {
 
   List<Widget> screens = [
     HomePage(),
-    HomePage(),
+    MyOrders(),
     HomePage(),
     SettingsPage(),
   ];
-
 }

@@ -52,15 +52,15 @@ class ChangePasswordController extends BaseController {
       };
       EasyLoading.show();
       final result = await httpService.request(
-          url: ApiConstant.changePassword, method: Method.POST, params: body);
+          url: ApiConstant.changePassword, method: Method.PUT, params: body);
       if (result != null) {
         if (result is d.Response) {
           var data = GlobalModel.fromJson(result.data);
           if (data.errorCode == 0) {
-            showSuccessBottomSheet(data.errorMessage ?? "", onClick: () {
-              Get.back();
-              Get.back();
-            });
+            Get.back();
+            UiErrorUtils.customSnackbar(
+                title: LangKeys.error.tr, msg: data.errorMessage ?? "");
+
           } else {
             UiErrorUtils.customSnackbar(
                 title: LangKeys.error.tr, msg: data.errorMessage ?? "");

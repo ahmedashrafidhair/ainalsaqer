@@ -1,3 +1,4 @@
+import 'package:ainalsaqer/app/routes/app_routes.dart';
 import 'package:ainalsaqer/app/translations/lang_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,12 +19,11 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: AppColors.primary,
-        // systemNavigationBarColor: Colors.purple,
-      ),
-    );
+    // SystemChrome.setSystemUIOverlayStyle(
+    //   SystemUiOverlayStyle.dark.copyWith(statusBarColor: AppColors.primary
+    //       // systemNavigationBarColor: Colors.purple,
+    //       ),
+    // );
     return Scaffold(
       // appBar: CustomHomeAppBar(
       //     title: Text("",
@@ -33,7 +33,9 @@ class Home extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(AppRoutes.addExpense);
+        },
         backgroundColor: AppColors.primary,
         child: SvgPicture.asset(Utils.getIconPath("ic_add_nav"),
             width: 30.0.w, height: 30.0.h),

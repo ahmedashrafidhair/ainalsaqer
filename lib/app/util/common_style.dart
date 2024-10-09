@@ -87,36 +87,42 @@ class CommonStyle {
 
   static InputDecoration textFieldSearchStyle({String hintTextStr = ""}) {
     return InputDecoration(
-      filled: true,
+      filled: false,
       isDense: true,
       fillColor: HexColor("F5F5F5"),
       hintText: hintTextStr,
-      hintStyle: AppTextStyles.regularTextStyle
-          .copyWith(fontSize: 14.0.sp, color: HexColor("ADADAD")),
-      errorStyle: AppTextStyles.regularTextStyle.copyWith(
-        fontSize: 14.0.sp,
+      hintStyle: TextStyle(
+        fontFamily: 'Cairo',
+        fontSize: 12.0.sp,
+        fontWeight: FontWeight.w400,
+        color: AppColors.text19,
+      ),
+      errorStyle: TextStyle(
+        fontFamily: 'Cairo',
+        fontSize: 12.0.sp,
+        fontWeight: FontWeight.w400,
       ),
       labelStyle: AppTextStyles.regularTextStyle.copyWith(fontSize: 14.0.sp),
-      contentPadding: EdgeInsets.symmetric(horizontal: 18.0.w, vertical: 11.h),
+      contentPadding:
+          EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 10.0.h),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4.0.r),
+        borderRadius: BorderRadius.circular(8.0.r),
         borderSide:
-            BorderSide(width: 1.0.w, color: Colors.white), //<-- SEE HERE
+            BorderSide(width: 0.3.w, color: AppColors.divider1), //<-- SEE HERE
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0.r),
+        borderSide:
+            BorderSide(width: 0.3.w, color: AppColors.divider1), //<-- SEE HERE
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4.0.r),
+        borderRadius: BorderRadius.circular(8.0.r),
         borderSide:
-            BorderSide(width: 1.0.w, color: Colors.white), //<-- SEE HERE
-      ),
-      errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4.0.r),
-        borderSide:
-            BorderSide(width: 1.0.w, color: Colors.white), //<-- SEE HERE
+            BorderSide(width: 1.w, color: AppColors.primary), //<-- SEE HERE
       ),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4.0.r),
-        borderSide:
-            BorderSide(width: 1.0.w, color: Colors.white), //<-- SEE HERE
+        borderRadius: BorderRadius.circular(8.0.r),
+        borderSide: BorderSide(width: 0.3.w, color: AppColors.divider1), //<--
       ), //<-- SEE HERE
     );
   }

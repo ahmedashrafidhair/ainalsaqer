@@ -1,3 +1,6 @@
+import 'package:ainalsaqer/data/models/order/order.dart';
+import 'package:ainalsaqer/data/models/order/order_model.dart';
+import 'package:ainalsaqer/ui/base_controller.dart';
 import 'package:dio/dio.dart' as d;
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -5,40 +8,42 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import '../../../app/translations/lang_keys.dart';
 import '../../../data/api/api_constant.dart';
 import '../../../data/api/http_service.dart';
-import '../../../data/models/home_statistics/home_statistics.dart';
-import '../../../data/models/home_statistics/home_statistics_model.dart';
-import '../../../data/models/order/order.dart';
-import '../../../data/models/order/order_model.dart';
-import '../../base_controller.dart';
 
-class HomePageController extends BaseController {
-  var isLoadingHomeStatistics = false.obs;
-  HomeStatistics? homeStatistics;
+class MyOrdersController extends BaseController {
   final PagingController<int, Order> pagingController =
       PagingController(firstPageKey: 0);
   static const _pageSize = 10;
 
+  var filterStatus = 3.obs;
+  DateTime? fromDate;
+  DateTime? toDate;
+  var fromDateStr = "".obs;
+  var toDateStr = "".obs;
+
   @override
   onInit() {
     super.onInit();
-    getHomePageStatistics();
     pagingController.addPageRequestListener((pageKey) {
-      getUnBookedOrders(pageKey);
+      getMyOrders(pageKey);
     });
   }
 
-  Future<void> getUnBookedOrders(int pageKey) async {
+  Future<void> getMyOrders(int pageKey) async {
     try {
       Map<String, dynamic> body = {
         'pageNumber': pageKey,
         'pageSize': 10,
       };
-
+      if (filterStatus.value != 3) {
+        body["status"] = filterStatus.value;
+      }
+      if (fromDateStr.value.isNotEmpty && toDateStr.value.isNotEmpty) {
+        body["from"] = "${fromDateStr.value}T00:00:00";
+        body["to"] = "${toDateStr.value}T00:00:00";
+      }
       final result = await httpService
           .request(
-              url: ApiConstant.getUnBookedOrders,
-              method: Method.GET,
-              params: body)
+              url: ApiConstant.getMyOrders, method: Method.GET, params: body)
           .catchError((onError) {
         pagingController.error = onError;
       });
@@ -64,24 +69,19 @@ class HomePageController extends BaseController {
     }
   }
 
-  Future<void> getHomePageStatistics() async {
-    try {
-      isLoadingHomeStatistics(true);
-      final result = await httpService.request(
-        url: ApiConstant.getHomePageStatistics,
-        method: Method.GET,
-      );
-      if (result != null) {
-        if (result is d.Response) {
-          var resp = HomeStatisticsModel.fromJson(result.data);
-          if (resp.result != null) {
-            homeStatistics = resp.result;
-          }
-        }
-      }
-    } finally {
-      isLoadingHomeStatistics(false);
-      update(['homeStatistics']);
+  String getTextFromFilterStatus() {
+    String str = LangKeys.allOrders.tr;
+    switch (filterStatus.value) {
+      case 0:
+        str = LangKeys.currentOrders.tr;
+        break;
+      case 1:
+        str = LangKeys.expiredOrders.tr;
+        break;
+      case 2:
+        str = LangKeys.cancelledOrders.tr;
+        break;
     }
+    return str;
   }
 }
