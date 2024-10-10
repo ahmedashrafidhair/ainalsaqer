@@ -2,6 +2,7 @@ import 'package:ainalsaqer/data/models/order/order.dart';
 import 'package:ainalsaqer/data/models/order/order_model.dart';
 import 'package:ainalsaqer/ui/base_controller.dart';
 import 'package:dio/dio.dart' as d;
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -13,6 +14,7 @@ class MyOrdersController extends BaseController {
   final PagingController<int, Order> pagingController =
       PagingController(firstPageKey: 0);
   static const _pageSize = 10;
+  final search = TextEditingController();
 
   var filterStatus = 3.obs;
   DateTime? fromDate;
@@ -29,6 +31,10 @@ class MyOrdersController extends BaseController {
   }
 
   Future<void> getMyOrders(int pageKey) async {
+    FocusScopeNode currentFocus = FocusScope.of(Get.context!);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.focusedChild?.unfocus();
+    }
     try {
       Map<String, dynamic> body = {
         'pageNumber': pageKey,
@@ -36,6 +42,8 @@ class MyOrdersController extends BaseController {
       };
       if (filterStatus.value != 3) {
         body["status"] = filterStatus.value;
+      }if (search.text.isNotEmpty ) {
+        body["searchQuery"] = search.text;
       }
       if (fromDateStr.value.isNotEmpty && toDateStr.value.isNotEmpty) {
         body["from"] = "${fromDateStr.value}T00:00:00";

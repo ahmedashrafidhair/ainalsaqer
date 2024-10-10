@@ -313,6 +313,32 @@ class LangKeys {
   static const String expiredOrders = 'expiredOrders';
   static const String cancelledOrders = 'cancelledOrders';
   static const String allOrders = 'allOrders';
+  static const String orderDetails = 'orderDetails';
+  static const String orderHistory = 'orderHistory';
+  static const String orderTime = 'orderTime';
+  static const String orderCreatorBranch = 'orderCreatorBranch';
+  static const String sourceOrderSection = 'sourceOrderSection';
+  static const String sales = 'sales';
+  static const String afterSales = 'afterSales';
+  static const String orderReceiptAndDeliveryData = 'orderReceiptAndDeliveryData';
+  static const String fromBranch = 'fromBranch';
+  static const String company = 'company';
+  static const String emirate = 'emirate';
+  static const String region = 'region';
+  static const String address = 'address';
+  static const String location = 'location';
+  static const String phone = 'phone';
+  static const String toBranch = 'toBranch';
+  static const String fromCustomer = 'fromCustomer';
+  static const String customerData = 'customerData';
+  static const String phoneNumber2 = 'phoneNumber2';
+  static const String vehicleData = 'vehicleData';
+  static const String chassisNumber = 'chassisNumber';
+  static const String plateNumber = 'plateNumber';
+  static const String vehicleCategory = 'vehicleCategory';
+  static const String vehicleType = 'vehicleType';
+  static const String duration = 'duration';
+  static const String minute = 'minute';
 
 
 

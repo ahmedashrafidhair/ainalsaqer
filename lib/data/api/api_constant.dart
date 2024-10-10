@@ -6,6 +6,7 @@ class ApiConstant {
   static const getDriverExpenses = 'DriverApp/GetDriverExpenses';
   static const getAllExpense = 'DriverApp/GetAllExpense';
   static const addDriverExpense = 'DriverApp/AddDriverExpense';
+  static const getById = 'DriverApp/GetById';
   static const saveFile = 'File/SaveFile';
   static const deleteFile = 'File/DeleteFile';
   static const register = 'auth/register';

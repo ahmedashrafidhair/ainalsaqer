@@ -8,6 +8,7 @@ class AppRoutes {
   static const changePassword = '/change_password';
   static const driverExpenses = '/driver_expenses';
   static const addExpense = '/add_expense';
+  static const orderDetails = '/order_details';
 
 
 }

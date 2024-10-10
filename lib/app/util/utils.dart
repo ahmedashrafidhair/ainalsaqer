@@ -70,6 +70,19 @@ class Utils {
     return str;
   }
 
+  static String orderDepartment(int department) {
+    String str = "";
+    switch (department) {
+      case 0:
+        str = LangKeys.sales.tr;
+        break;
+      case 1:
+        str = LangKeys.afterSales.tr;
+        break;
+    }
+    return str;
+  }
+
   static Color getColorFromStatus(int orderStatus) {
     Color color = AppColors.primary;
     switch (orderStatus) {

@@ -1,6 +1,7 @@
 import 'package:ainalsaqer/app/components/custom_primary_icon_button.dart';
 import 'package:ainalsaqer/app/components/custom_text.dart';
 import 'package:ainalsaqer/app/extensions/color.dart';
+import 'package:ainalsaqer/app/routes/app_routes.dart';
 import 'package:ainalsaqer/app/translations/lang_keys.dart';
 import 'package:ainalsaqer/app/util/utils.dart';
 import 'package:flutter/material.dart';
@@ -183,7 +184,12 @@ class ItemMyOrder extends StatelessWidget {
             12.verticalSpace,
             CustomPrimaryIconButton(
               text: LangKeys.viewOrder.tr,
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(AppRoutes.orderDetails, arguments: {
+                  "orderId": order.id ?? "",
+                  "docCode": order.docCode ?? ""
+                });
+              },
               fontSize: 13.sp,
               color: Utils.getColorFromStatus(order.status ?? 0),
               icon: Icons.arrow_back,

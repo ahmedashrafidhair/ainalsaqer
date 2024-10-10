@@ -36,8 +36,12 @@ class MyOrders extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
-                // controller: controller.dateRange,
+                controller: controller.search,
                 keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.search,
+                onFieldSubmitted: (value){
+                  controller.pagingController.refresh();
+                },
                 style: TextStyle(
                   fontFamily: 'Cairo',
                   fontSize: 12.0.sp,
@@ -234,6 +238,7 @@ class MyOrders extends StatelessWidget {
             Expanded(
                 child: RefreshIndicator(
                     onRefresh: () async {
+                      controller.search.text = "";
                       controller.fromDate = null;
                       controller.toDate = null;
                       controller.fromDateStr("");
